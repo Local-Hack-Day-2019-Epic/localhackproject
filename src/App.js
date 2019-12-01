@@ -17,6 +17,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />
+        <form>
+          <label>
+            Enter Course Code:
+            <input type="text" name="course_code_input" />
+          </label>
+          <input type="submit" value="Add" />
+        </form>
       </header>
     </div>
   );
