@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 
-export default class TimetableBlock{
+export default class TimetableBlock extends React.Component {
     state = {
         empty: undefined
     }
 
     constructor(empty){
+        super(empty)
         this.state.empty = empty;
         this._courseInfo = {
             courseType: {
@@ -38,6 +39,6 @@ export default class TimetableBlock{
     }
     
     render(){
-
+        return null;
     }
 }

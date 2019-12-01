@@ -54,7 +54,7 @@ class App extends React.Component {
             }
         };
         const _viewSchedules = () => {
-
+            ReactDOM.render(<timetableBlock/>, document.getElementById('root'))
         }
         return (
             <div className="App">
