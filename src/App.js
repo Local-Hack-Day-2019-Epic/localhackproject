@@ -45,14 +45,16 @@ class App extends React.Component {
         };
 
         const _onSubmit = () => {
-            this.state.courses.push(this.state.courseCodeValue);
-            this.setState({
-                courses: this.state.courses,
-                courseCodeValue: ""
-            });
+            if (this.state.courseCodeValue.length > 0 && this.state.courses.indexOf(this.state.courseCodeValue) == -1) {
+                this.state.courses.push(this.state.courseCodeValue);
+                this.setState({
+                    courses: this.state.courses,
+                    courseCodeValue: ""
+                });
+            }
         };
         const _viewSchedules = () => {
-            
+
         }
         return (
             <div className="App">
