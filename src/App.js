@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 const options = [
-  'one', 'two', 'three'
+  'Select Semester', 'Fall 2019', 'Winter 2020'
 ]
 const defaultOption = options[0]
 
