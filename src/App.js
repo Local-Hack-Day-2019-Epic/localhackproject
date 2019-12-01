@@ -31,7 +31,6 @@ function App() {
               <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />
             </FadeIn>
           </Delay>
-          
       </header>
     </div>
   );
