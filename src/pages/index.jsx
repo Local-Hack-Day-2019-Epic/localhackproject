@@ -37,11 +37,11 @@ class MainPage extends React.Component {
                                           placeholder="Select an option"/>
 
                                 <label>
-                                    Enter Course Code:
+                                    Enter Professor Name:
                                     <input type="text" value={this.state.courseCodeValue} name="course_code_input"
                                            onChange={this._handleChange}/>
                                 </label>
-                                <input type="submit" value="Add" onClick={this._onSubmit}/>
+                                <input type="submit" value="Add" onClick={this.onSubmit}/>
                                 <React.Fragment>
                                     <ul className="list-group">
                                         {
@@ -55,7 +55,6 @@ class MainPage extends React.Component {
                                             ))}
                                     </ul>
                                 </React.Fragment>
-                                <input type="submit" value="View Schedules" onClick={this._viewSchedules}/>
                             </Delay>
                         </header>
                     </div>
@@ -69,20 +68,24 @@ class MainPage extends React.Component {
 
 
     _viewSchedules = () => {
-        let scraper = new rmpScraper(this.state.courseCodeValue);
+        let scraper = new rmpScraper(this.state.courseCodeValue, this);
         scraper.search();
     }
 
-    _onSubmit = () => {
-
+    onSubmit = () => {
+        this.scraper = new rmpScraper(this.state.courseCodeValue, this);
+        let result = this.scraper.search();
 
         if (this.state.courseCodeValue.length > 0 && this.state.courses.indexOf(this.state.courseCodeValue) === -1) {
-            this.state.courses.push(this.state.courseCodeValue);
-            this.setState({
-                courses: this.state.courses,
-                courseCodeValue: ""
-            });
+
         }
+    };
+    setRating = () => {
+        this.state.courses.push("Professor " + this.scraper.professorName + " has a " + this.scraper.professorRating);
+        this.setState({
+            courses: this.state.courses,
+            courseCodeValue: ""
+        });
     };
 
     const

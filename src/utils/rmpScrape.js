@@ -11,9 +11,11 @@ const avgRatingQuery = "#mainContent > div.right-panel > div.rating-breakdown > 
 module.exports = class rmpScraper {
 
     professorName = "";
+    index = ""
     professorPageLink = "";
 
-    constructor(professorName) {
+    constructor(professorName, index) {
+        this.index = index;
         this.professorName = professorName;
     }
 
@@ -44,7 +46,8 @@ module.exports = class rmpScraper {
                         const $ = cheerio.load(html);
                         const rating = $(avgRatingQuery);
                         console.log(rating.text());
-
+                        this.professorRating = rating.text()
+                        this.index.setRating();
                     })
             }
         }
