@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.css';
-import Loading from "./loading.js"
-import Delay from 'react-delay'
+import Loading from "./loading.js";
+import Delay from 'react-delay';
+import TimetableBlock from './components/timetableBlock';
 
 
-import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import { delay } from 'q';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 const options = [
   'Select Semester', 'Fall 2019', 'Winter 2020'
-]
-const defaultOption = options[0]
+];
+const defaultOption = options[0];
 
 class App extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends React.Component {
    */
     const delayAmount = 2400;
     let courseValue = "";
+    const course = new TimetableBlock('CEG 2136', 'Lecture', 'C00', '14:30', '15:50', 'Fadimalek');
 
     const _onSelect = () => {
 
@@ -51,6 +53,7 @@ class App extends React.Component {
             <Loading/>
             <Delay wait={delayAmount}>
             <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option"/>
+            
             <li>
               <label>
                 Enter Course Code:

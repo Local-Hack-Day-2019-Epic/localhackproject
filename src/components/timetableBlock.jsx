@@ -1,43 +1,53 @@
 import React, {Component} from 'react';
 
 
-export default class TimetableBlock{
+export default class TimetableBlock extends Component{
     state = {
-        empty: undefined
+        empty: true
     }
 
-    constructor(empty){
-        this.state.empty = empty;
-        this._courseInfo = {
-            courseType: {
-                lab: false,
-                lecture: false,
-                dgd: false,
-                tutorial: false
-            },
-            startTime: null,
-            endTime: null,
-            profTeaching: null,
-            
-            // endTime: startTime => {
-            //     let hours = parseInt(startTime.substring(0, 2));
-            //     let minutes = parseInt(startTime.substring(3, 5));
+    /**
+     * 
+     * @param {string} courseCode 
+     * @param {string} courseType 
+     * @param {string} section 
+     * @param {string} startTime 
+     * @param {string} endTime 
+     * @param {string} prof 
+     */
+    constructor(courseCode, courseType, section, startTime, endTime, prof){
+        super();
 
-            //     hours += 1;
-            //     minutes += 20;
-                
-            //     while (minutes > 60){
-            //         minutes -= 60;
-            //         hours += 1;
-            //     }
+        if (courseCode || courseType || section || startTime || endTime || prof)
+            this.state.empty = false;
 
-            //     return (hours < 10? '0': '') + hours + ':' + minutes;
-            // }
-
-        }
+        this.courseCode = courseCode;
+        this.courseType = courseType;
+        this.section = section;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.profTeaching = prof;
     }
     
     render(){
-
+        return (
+            <div>
+                {!this.state.empty?
+                <span style={{ fontSize: 10 }} className='badge m-2 badge-primary'>
+                    <p>Course code: {this.courseCode} - {this.section}</p>
+                    <p>{this.courseType}</p>
+                    <p>{this.startTime} - {this.endTime}</p>
+                    <p>{this.profTeaching}</p>
+                </span>
+                :
+                <span style={{ fontSize: 10 }} className='badge m-2 badge-warning'>
+                    <p>Course code: {this.courseCode} - {this.section}</p>
+                    <p>{this.courseType}</p>
+                    <p>{this.startTime} - {this.endTime}</p>
+                    <p>{this.profTeaching}</p>
+                </span>
+                }
+            </div>
+        )
     }
 }
