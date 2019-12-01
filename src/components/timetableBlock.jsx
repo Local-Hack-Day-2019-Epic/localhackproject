@@ -28,23 +28,27 @@ export default class TimetableBlock extends Component{
         this.endTime = endTime;
         this.profTeaching = prof;
     }
+
+    isEmpty = () => {
+        return this.state.empty;
+    }
     
     render(){
         return (
             <div>
                 {!this.state.empty?
-                <span style={{ fontSize: 10 }} className='badge m-2 badge-primary'>
+                <span style={{ fontSize: 15 }} className='badge m-2 badge-warning'>
                     <p>Course code: {this.courseCode} - {this.section}</p>
                     <p>{this.courseType}</p>
                     <p>{this.startTime} - {this.endTime}</p>
                     <p>{this.profTeaching}</p>
                 </span>
                 :
-                <span style={{ fontSize: 10 }} className='badge m-2 badge-warning'>
-                    <p>Course code: {this.courseCode} - {this.section}</p>
-                    <p>{this.courseType}</p>
-                    <p>{this.startTime} - {this.endTime}</p>
-                    <p>{this.profTeaching}</p>
+                <span style={{ fontSize: 15 }} className='badge m-2 badge-primary'>
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
                 </span>
                 }
             </div>
