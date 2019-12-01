@@ -30,7 +30,9 @@ export default class TimetableBlock extends Component{
     }
 
     render(){
+        console.log("hellos")
         return (
+
             <div>
                 {!this.state.empty?
                     <span style={{ fontSize: 10 }} className='badge m-2 badge-primary'>
