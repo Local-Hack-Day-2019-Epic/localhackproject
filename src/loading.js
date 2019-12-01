@@ -34,13 +34,6 @@ export default class Loading extends React.Component {
         super(props);
     }
 
-    async componentDidMount2(){
-        let response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        let json = await response.json();
-        await json.setState({loading: true});
-        await json.setState({done: true});
-    }
-
     componentDidMount() {
         setTimeout(() => {
             fetch("https://jsonplaceholder.typicode.com/posts")
@@ -54,23 +47,27 @@ export default class Loading extends React.Component {
         }, 1200);
     }
 
+    showLoadingScreen(){
+        if (!this.state.done){
+            return (
+                <FadeIn>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h1>fetching pizza</h1>
+                        {!this.state.loading ? (
+                            <Lottie options={defaultOptions} height={120} width={120} />
+                        ) : (
+                            <Lottie options={defaultOptions2} height={120} width={120} />
+                        )}
+                    </div>
+                </FadeIn>
+            )
+        }
+    }
+
     render() {
         return (
             <div>
-                {!this.state.done ? (
-                    <FadeIn>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <h1>fetching pizza</h1>
-                            {!this.state.loading ? (
-                                <Lottie options={defaultOptions} height={120} width={120} />
-                            ) : (
-                                <Lottie options={defaultOptions2} height={120} width={120} />
-                            )}
-                        </div>
-                    </FadeIn>
-                ) : (
-                    <h1>hello world</h1>
-                )}
+                {this.showLoadingScreen()}
             </div>
         );
     }
