@@ -45,7 +45,7 @@ class App extends React.Component {
         };
 
         const _onSubmit = () => {
-            if (this.state.courseCodeValue.length > 0 && this.state.courses.indexOf(this.state.courseCodeValue) == -1) {
+            if (this.state.courseCodeValue.length > 0 && this.state.courses.indexOf(this.state.courseCodeValue) === -1) {
                 this.state.courses.push(this.state.courseCodeValue);
                 this.setState({
                     courses: this.state.courses,
