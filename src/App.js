@@ -3,7 +3,6 @@ import './App.css';
 
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import ReactDOM from 'react-dom'
 const options = [
   'Select Semester', 'Fall 2019', 'Winter 2020'
 ]
@@ -15,25 +14,28 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      courses: []
+      courses: [],
+      courseCodeValue: ""
     }
   }
 
 
   render() {
-    let courseValue = "";
-
     const _onSelect = () => {
 
     };
     const _handleChange = (event) => {
-      courseValue = event.target.value;
+      this.state.courseCodeValue += event.target.value;
+      this.setState({
+        courseCodeValue: event.target.value
+      });
     };
 
     const _onSubmit = () => {
-      this.state.courses.push(courseValue);
+      this.state.courses.push(this.state.courseCodeValue);
       this.setState({
         courses: this.state.courses,
+        courseCodeValue: ""
       });
     };
     return (
@@ -43,7 +45,7 @@ class App extends React.Component {
             <li>
               <label>
                 Enter Course Code:
-                <input type="text" name="course_code_input" onChange={_handleChange}/>
+                <input type="text" value={this.state.courseCodeValue} name="course_code_input" onChange={_handleChange}/>
               </label>
               <input type="submit" value="Add" onClick={_onSubmit}/>
               <React.Fragment>
