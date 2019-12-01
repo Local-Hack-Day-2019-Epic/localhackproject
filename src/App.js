@@ -23,12 +23,13 @@ class App extends React.Component {
     }
   }
   
-  /**
-   * @var delayAmount: Lenght of the delay in ms 
-   */
-  const delayAmount = 2400;
+  
 
   render() {
+    /**
+   * @var delayAmount: Lenght of the delay in ms 
+   */
+    const delayAmount = 2400;
     let courseValue = "";
 
     const _onSelect = () => {
@@ -48,7 +49,7 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <Loading/>
-            <Delay wait={delayAmount}
+            <Delay wait={delayAmount}>
             <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option"/>
             <li>
               <label>
