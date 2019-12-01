@@ -8,7 +8,7 @@ const firstNameQuery = "";
 const lastNameQuery = "";
 const avgRatingQuery = "#mainContent > div.right-panel > div.rating-breakdown > div.left-breakdown > div > div.breakdown-header.quality-header > div > div > div";
 
-class scraper {
+module.exports = class rmpScraper {
 
     professorName = "";
     professorPageLink = "";
@@ -50,11 +50,6 @@ class scraper {
         }
     }
 }
-
-let webScraper = new scraper("Mike Newman");
-
-webScraper.search();
-
 // axios(baseUrl)
 //     .then(response => {
 //         const html = response.data;

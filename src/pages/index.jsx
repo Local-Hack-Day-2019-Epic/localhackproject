@@ -5,7 +5,7 @@ import Delay from 'react-delay'
 import {BrowserRouter as Router, Route,Switch, Link, Redirect, useHistory} from "react-router-dom";
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-
+import rmpScraper from '../utils/rmpScrape.js'
 
 import {delay} from 'q';
 import FadeIn from 'react-fade-in/lib/FadeIn';
@@ -27,12 +27,6 @@ class MainPage extends React.Component {
 
         render() {
 
-        if (this.state.redirect) {
-
-                    return<Router>
-            <Redirect to="/timetableBlock"/>;
-            </Router>
-                }
 
                 return (
                     <div className="App">
@@ -75,7 +69,8 @@ class MainPage extends React.Component {
 
 
     _viewSchedules = () => {
-        this.setState({redirect: true});
+        let scraper = new rmpScraper(this.state.courseCodeValue);
+        scraper.search();
     }
 
     _onSubmit = () => {

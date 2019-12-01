@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './index.css'
 
 export default class TimetableBlock extends Component{
     state = {
@@ -30,7 +30,7 @@ export default class TimetableBlock extends Component{
     }
 
     render(){
-        console.log("hellos")
+        console.log("hellos");
         return (
 
             <div>
