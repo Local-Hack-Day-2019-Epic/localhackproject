@@ -24,11 +24,21 @@ const defaultOptions2 = {
 };
 
 export default class Loading extends React.Component {
+    
+    state = {
+        loading: null,
+        done: null
+    };
+    
     constructor(props) {
         super(props);
-        this.state = {
-            done: undefined
-        };
+    }
+
+    async componentDidMount2(){
+        let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        let json = await response.json();
+        await json.setState({loading: true});
+        await json.setState({done: true});
     }
 
     componentDidMount() {
