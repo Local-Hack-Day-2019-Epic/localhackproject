@@ -1,14 +1,18 @@
 import React from 'react';
 import './App.css';
+import Loading from "./loading.js"
+import Delay from 'react-delay'
+
 
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
+import { delay } from 'q';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 import ReactDOM from 'react-dom'
 const options = [
   'Select Semester', 'Fall 2019', 'Winter 2020'
 ]
-const defaultOption = options[0];
-
+const defaultOption = options[0]
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +22,11 @@ class App extends React.Component {
       courses: []
     }
   }
-
+  
+  /**
+   * @var delayAmount: Lenght of the delay in ms 
+   */
+  const delayAmount = 2400;
 
   render() {
     let courseValue = "";
@@ -39,6 +47,8 @@ class App extends React.Component {
     return (
         <div className="App">
           <header className="App-header">
+            <Loading/>
+            <Delay wait={delayAmount}
             <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option"/>
             <li>
               <label>
@@ -60,6 +70,7 @@ class App extends React.Component {
                 </ul>
               </React.Fragment>
             </li>
+            </Delay>
           </header>
         </div>
     );
