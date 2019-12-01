@@ -9,15 +9,18 @@ const options = [
 ]
 const defaultOption = options[0];
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      courses: []
+    }
   }
 
+
   render() {
-    let courses = {
-      list_of_courses: ["test1", "test2", "test3"]
-    }
     let courseValue = "";
 
     const _onSelect = () => {
@@ -28,29 +31,25 @@ class App extends React.Component {
     };
 
     const _onSubmit = () => {
-      courses.list_of_courses.push(courseValue);
-      courses.list_of_courses.map(course => (
-          <li
-              key={course}
-              className="list-group-item list-group-item-primary"
-          >
-            {course}
-          </li>
-      ));
+      this.state.courses.push(courseValue);
+      this.setState({
+        courses: this.state.courses,
+      });
     };
     return (
         <div className="App">
           <header className="App-header">
             <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option"/>
-            <form onSubmit={_onSubmit}>
+            <li>
               <label>
                 Enter Course Code:
                 <input type="text" name="course_code_input" onChange={_handleChange}/>
               </label>
-              <input type="submit" value="Add"/>
+              <input type="submit" value="Add" onClick={_onSubmit}/>
               <React.Fragment>
                 <ul className="list-group">
-                  {courses.list_of_courses.map(course => (
+                  {
+                    this.state.courses.map(course => (
                       <li
                           key={course}
                           className="list-group-item list-group-item-primary"
@@ -60,7 +59,7 @@ class App extends React.Component {
                   ))}
                 </ul>
               </React.Fragment>
-            </form>
+            </li>
           </header>
         </div>
     );
