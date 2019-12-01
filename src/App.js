@@ -4,12 +4,24 @@ import './App.css';
 import Loading from "./loading.js"
 
 
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
+const options = [
+  'one', 'two', 'three'
+]
+const defaultOption = options[0]
+
 function App() {
+  const _onSelect = () => {
+
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        
       <loading/>
+
+        <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />
       </header>
     </div>
   );
