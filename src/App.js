@@ -17,7 +17,7 @@ function App() {
   const _onSelect = () => {};
 
   /**
-   * @var delayAmount {number} Lenght of the delay in ms 
+   * @var delayAmount: Lenght of the delay in ms 
    */
   const delayAmount = 2400;
 
