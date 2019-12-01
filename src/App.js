@@ -19,9 +19,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <loading/>
-
-        <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />
+          <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />
+          <Loading/>
       </header>
     </div>
   );
