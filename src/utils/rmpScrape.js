@@ -51,7 +51,7 @@ class scraper {
     }
 }
 
-let webScraper = new scraper("Andrzej Czajkowski");
+let webScraper = new scraper("Mike Newman");
 
 webScraper.search();
 
