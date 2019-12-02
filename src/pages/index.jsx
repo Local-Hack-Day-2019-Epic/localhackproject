@@ -11,10 +11,7 @@ import {delay} from 'q';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import ReactDOM from 'react-dom'
 import timetableBlock from "./timetableBlock";
-const options = [
-    'Select Semester', 'Fall 2019', 'Winter 2020'
-]
-const defaultOption = options[0]
+
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -33,8 +30,8 @@ class MainPage extends React.Component {
                         <header className="App-header">
                             <Loading/>
                             <Delay wait={this.delayAmount}>
-                                <Dropdown options={options} onChange={this._onSelect} value={defaultOption}
-                                          placeholder="Select an option"/>
+
+                                <h1 >Professor Rating Search</h1>
 
                                 <label>
                                     Enter Professor Name:
@@ -98,9 +95,7 @@ class MainPage extends React.Component {
     const
     delayAmount = 2400;
 
-    const
-    _onSelect = () => {
-    };
+
 
 
 
