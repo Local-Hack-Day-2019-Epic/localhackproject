@@ -31,8 +31,6 @@ class MainPage extends React.Component {
                             <Loading/>
                             <Delay wait={this.delayAmount}>
 
-                                <h1 >Professor Rating Search</h1>
-
                                 <label>
                                     Enter Professor Name:
                                     <input type="text" value={this.state.courseCodeValue} name="course_code_input"
